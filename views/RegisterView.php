@@ -56,21 +56,7 @@
 		  </div>
 		</div>
 	  </div>
-	  <!-- <div class="register-ip mb-3">
-	    <div class="row g-3 align-items-center">
-		  <div class="col-3">
-		    <label class="col-form-label">Nhập lại password</label>
-		  </div>
-		  <div class="col-6">
-		    <input type="password" name="repassword" class="form-input" required>
-		  </div>
-		  <div class="col-3">
-		    <span class="form-text">
-		      Nhập lại phải trùng với mật khẩu ở trên
-		    </span>
-		  </div>
-		</div>
-	  </div> -->
+
 	  <div class="register-ip mb-3">
 	    <div class="row g-3 align-items-center">
 		  <div class="col-3">
