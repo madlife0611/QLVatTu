@@ -39,7 +39,7 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" style="font-size: 20px; font-weight: 700; color:#f48120; background-color: #224099;">Mật khẩu</span>
-              <input type="text" name="matkhau" value="<?php echo isset($record->matkhau) ? $record->matkhau : ""; ?>" class="form-control" required>
+              <input type="text" name="matkhau" <?php if(isset($record->email)): ?> placeholder="Không đổi password thì không nhập thông tin vào ô textbox này" <?php else: ?> required <?php endif; ?> class="form-control">
             </div>
             <div class="input-group mb-3">
               <input type="submit" value="Xử lý" class="btn btn-hover" style="font-size: 20px; font-weight: 700; "></input>

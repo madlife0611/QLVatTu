@@ -49,5 +49,12 @@
 			//quay tro lai trang products
 			header("location:index.php?controller=products");
 		}
+		public function tangsolansudung(){
+			$masp = isset($_GET["masp"]) && $_GET["masp"] > 0 ? $_GET["masp"] : 0;
+			//goi ham modelUpdate de update ban ghi
+			$this->modelUpdateSolansudung();
+			//quay tro lai trang products
+			header("location:index.php?controller=products");
+		}
 	}
  ?>

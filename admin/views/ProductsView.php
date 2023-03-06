@@ -15,15 +15,14 @@
             <div class="smart-search">
               <ul>
                 <li><a href="#">Sản phẩm 1</a></li>
-                <li><a href="#">Sản phẩm 1</a></li>
-                <li><a href="#">Sản phẩm 1</a></li>
+                <li><a href="#">Sản phẩm 2</a></li>
+                <li><a href="#">Sản phẩm 3</a></li>
               </ul>
             </div>
           </div>
         
     </div>
-    <style type="text/css">
-        
+    <style type="text/css">        
         .header-search{
             padding: 0px 10px;
             font-weight: bold;
@@ -109,6 +108,7 @@
     </div> 
 
     <div style="border: 2px solid #224099; border-radius:0 0 20px 20px; padding: 20px;">
+        
         <table class="table table-data">
             <thead>
                 <tr>
@@ -129,6 +129,7 @@
             </thead>
             <tbody>
                 <?php foreach($data as $rows): ?>
+                <form action="index.php?controller=products&action=tangsolansudung" method="post">
                 <tr>
                     <td><?php if($rows->anh != "" && file_exists("../assets/upload/products/".$rows->anh)): ?>
                             <img src="../assets/upload/products/<?php echo $rows->anh; ?>" style="max-width: 100px;">
@@ -138,12 +139,15 @@
                     <td><?php echo $rows->mota; ?></td>
                     <td><?php echo number_format($rows->gianhap); ?>đ</td>
                     <td><?php echo $rows->ngaynhap; ?></td>
-                    <td><?php echo $rows->solansudung; ?></td>
+                    <td>
+                        <input type="number" min="0"  value="<?php echo $rows->solansudung; ?>" name="solansudung" required="Không thể để trống">
+                        <input type="submit" class="btn btn-hover" value="Cập nhật">
+                    </td>
+                    <!-- Hàm tính khấu hao -->
                     <?php 
                         $ngaynhap = strtotime("$rows->ngaynhap");
                         $songaysudung = ceil((time()-$ngaynhap)/60/60/24);
                         $khauhao = ($songaysudung * $rows->khauhaoperday) + ($rows->solansudung * $rows->khauhaoperused);
-
                      ?>
                     <td><?php echo $khauhao; ?> %</td>                   
                     <td><?php if(isset($rows->trangthai) && $rows->trangthai == 1): ?>
@@ -175,9 +179,11 @@
                         <a class="btn btn-hover" href="index.php?controller=products&action=delete&masp=<?php echo $rows->masp; ?>" onclick="return window.confirm('Are you sure?');">Delete</a>
                     </td>
                 </tr>
+                </form>
                 <?php endforeach; ?>
             </tbody>
         </table>
+        
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item">

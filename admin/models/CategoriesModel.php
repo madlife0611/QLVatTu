@@ -73,8 +73,7 @@
 			//create
 			//lay bien ket noi csdl
 			$db = Connection::getInstance();
-			//chuan bi truy van}
-		    
+			//chuan bi truy van}		    
 			$query = $db->prepare("insert into categories set tendm = :var_tendm, mota = :var_mota, danhmuccha = :var_danhmuccha");
 			//thuc thi truy van, co truyen tham so vao cau lenh sql
 			$query->execute(["var_tendm"=>$tendm,"var_mota"=>$mota,"var_danhmuccha"=>$danhmuccha]);

@@ -141,7 +141,7 @@
 						unlink("../assets/upload/products/".$record->anh);
 				}
 				//---
-				$anh = time()."_".$_FILES['anh']['name'];
+				$anh = $_FILES['anh']['name'];
 				move_uploaded_file($_FILES['anh']['tmp_name'], "../assets/upload/products/$anh");
 				$query = $db->prepare("update products set anh=:var_anh where masp=$masp");
 				$query->execute(['var_anh'=>$anh]);
@@ -164,10 +164,10 @@
 			//lay bien ket noi csdl
 			$db = Connection::getInstance();
 			//neu user upload anh thi thuc hien upload
-			$anh = "";
-			if($_FILES['anh']['name'] != ""){
-				$anh = time()."_".$_FILES['anh']['name'];
-				move_uploaded_file($_FILES['anh']['tmp_name'], "../assets/upload/products/$anh");
+			$anh="";
+			if($_FILES['anh']['name']!=""){
+				$anh=$_FILES['anh']['name'];
+				move_uploaded_file($_FILES['anh']['tmp_name'],"../assets/upload/products/$anh");
 			}
 			// if($ngaynhap == ""){
 			// 	//chuan bi truy van
@@ -199,6 +199,19 @@
 			$query = $db->prepare("delete from products where masp=:var_masp");
 			//thuc thi truy van, co truyen tham so vao cau lenh sql
 			$query->execute(["var_masp"=>$masp]);
+		}
+		public function modelUpdateSolansudung(){
+		    $masp = isset($_GET["masp"]) && $_GET["masp"] > 0 ? $_GET["masp"] : 0;
+			$solansudung = $_POST["solansudung"];
+			//update cot tensp
+			//lay bien ket noi csdl
+			$db = Connection::getInstance();
+			//chuan bi truy van
+			$query = $db->prepare("update products set solansudung = :var_solansudung where masp=:var_masp");
+			//thuc thi truy van, co truyen tham so vao cau lenh sql
+			$query->execute(["var_masp"=>$masp,"var_solansudung"=>$solansudung]);	
+			//---
+			
 		}
 	}
  ?>

@@ -46,7 +46,7 @@
 			//lay bien ket noi csdl
 			$db = Connection::getInstance();
 			//chuan bi truy van
-			$query = $db->prepare("update users set tentk = :var_tentk where matk=:var_matk");
+			$query = $db->prepare("update users set tentk = :var_tentk, email = :var_email, diachi = :var_diachi, sdt = :var_sdt where matk=:var_matk");
 			//thuc thi truy van, co truyen tham so vao cau lenh sql
 			$query->execute(["var_matk"=>$matk,"var_tentk"=>$tentk,"var_email"=>$email,"var_sdt"=>$sdt,"var_diachi"=>$diachi]);
 			//neu matkhau khong rong thi update matkhau
